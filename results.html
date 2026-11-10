@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Results · PSAT Practice</title><meta name="description" content="Free PSAT/NMSQT practice tests, quick topic practice, and study guides."><link rel="stylesheet" href="assets/style.css"><link rel="icon" href="assets/favicon.svg"></head><body>
+<div class="wrap"><main>
+<h1>My Results</h1><p class="muted">Saved only in this browser on this device. If you switch phones or clear your browser data, they will be gone.</p>
+<h2>Practice tests</h2><div id="tr"></div><h2>Quick practice sessions</h2><div id="pr"></div>
+<p style="margin-top:30px"><button class="btn small ghost" id="clear">Clear all my saved data</button></p>
+</main></div>
+<script src="assets/common.js"></script><script src="assets/questions.js"></script><script>
+(function(){const res=PSAT.load('psat.results',[]);const D=PSAT_DATA;
+document.getElementById('tr').innerHTML=res.length?'<table class="std"><tr><th>Date</th><th>Test</th><th>RW</th><th>Math</th><th>Total (est.)</th><th></th></tr>'+res.map(r=>{const t=D.tests.find(x=>x.id===r.t);const sc={};t.sections.forEach(s=>{let c=0,n=0;s.modules.forEach(m=>m.questions.forEach(q=>{n++;if(PSAT.isCorrect(q,r.answers[q.id]))c++}));sc[s.id]=PSAT.scale(c,n)});
+return `<tr><td>${new Date(r.date).toLocaleDateString()}</td><td>${t.name}</td><td>${sc.rw}</td><td>${sc.math}</td><td><b>${sc.rw+sc.math}</b></td><td><a href="test.html?result=${r.rid}">Details</a></td></tr>`}).join('')+'</table><p class="tiny muted">Scores are estimates, not official scores.</p>':'<p>No tests finished yet. <a href="tests.html">Take a practice test</a>.</p>';
+const pr=PSAT.load('psat.practice',[]);
+document.getElementById('pr').innerHTML=pr.length?'<table class="std"><tr><th>Date</th><th>Topics</th><th>Score</th></tr>'+pr.slice(0,30).map(p=>`<tr><td>${new Date(p.date).toLocaleDateString()}</td><td>${p.domains.join(', ')}</td><td>${p.c} / ${p.n}</td></tr>`).join('')+'</table>':'<p>No practice sessions yet. <a href="practice.html">Try Quick Practice</a>.</p>';
+document.getElementById('clear').onclick=()=>{if(confirm('Delete all saved tests, results, and practice history on this device?')){Object.keys(localStorage).filter(k=>k.startsWith('psat.')).forEach(k=>localStorage.removeItem(k));location.reload()}};})();</script><script>PSAT.header("results.html");PSAT.footer();</script></body></html>

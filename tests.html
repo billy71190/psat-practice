@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Practice Tests · PSAT Practice</title><meta name="description" content="Free PSAT/NMSQT practice tests, quick topic practice, and study guides."><link rel="stylesheet" href="assets/style.css"><link rel="icon" href="assets/favicon.svg"></head><body>
+<div class="wrap"><main>
+<h1>Full-Length Practice Tests</h1>
+<p>Each test is built like the digital PSAT/NMSQT: Reading and Writing (2 modules × 27 questions, 32 minutes each), then Math (2 modules × 22 questions, 35 minutes each), with an optional break in between. The second module of each section is a bit harder than the first.</p>
+<div class="grid" id="tests"></div>
+<div class="tip"><b>Good to know:</b> the real PSAT/NMSQT is <i>adaptive</i>: how you do on Module 1 decides whether Module 2 is easier or harder. These practice tests use a fixed Module 2, so they cover a wide range of difficulty. For the official adaptive experience, take the free full-length tests in College Board's <a href="https://bluebook.collegeboard.org/students/download-bluebook" target="_blank" rel="noopener">Bluebook app</a>.</div>
+<p class="muted tiny">All questions on this site are original practice questions written in the style of the test.</p>
+</main></div>
+<script src="assets/common.js"></script><script src="assets/questions.js"></script><script>
+(function(){const el=document.getElementById('tests');const res=PSAT.load('psat.results',[]);
+el.innerHTML=PSAT_DATA.tests.map(t=>{const p=PSAT.load('psat.progress.t'+t.id,null);const last=res.find(r=>r.t===t.id);
+return `<div class="card"><h3>${t.name}</h3><p>98 questions · about 2 hr 15 min</p>${last?`<p class="tiny muted">Last taken ${new Date(last.date).toLocaleDateString()} · <a href="test.html?result=${last.rid}">see results</a></p>`:''}
+<a class="btn" href="test.html?t=${t.id}">${p?'Resume':'Start'} ${t.name}</a>${p?` <button class="btn small ghost" onclick="if(confirm('Discard your in-progress answers and start over?')){localStorage.removeItem('psat.progress.t${t.id}');location.reload()}">Restart</button>`:''}</div>`}).join('')})();</script><script>PSAT.header("tests.html");PSAT.footer();</script></body></html>

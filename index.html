@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PSAT Practice</title><meta name="description" content="Free PSAT/NMSQT practice tests, quick topic practice, and study guides."><link rel="stylesheet" href="assets/style.css"><link rel="icon" href="assets/favicon.svg"></head><body>
+<div class="wrap"><main>
+<div class="hero"><h1>PSAT Practice</h1><p>Full-length practice tests in the digital PSAT/NMSQT format, quick practice by topic, and study guides, all free. Works on your phone.</p>
+<a class="btn secondary" href="test.html?t=1">Start Practice Test 1</a></div>
+<div id="resume"></div>
+<div class="grid">
+ <div class="card"><h3>📝 Full Practice Tests</h3><p>2 complete tests. Each has 98 questions, timed modules, a question navigator, mark-for-review, Desmos calculator, and a reference sheet. You get an estimated score and an explanation for every question.</p><a class="btn" href="tests.html">See tests</a></div>
+ <div class="card"><h3>⚡ Quick Practice</h3><p>10 minutes free? Pick a topic like Transitions or Advanced Math, answer a few questions, and see the explanation right after each one.</p><a class="btn" href="practice.html">Practice a topic</a></div>
+ <div class="card"><h3>📚 Study Guides</h3><p>How the test works and how it's scored, Reading &amp; Writing and Math strategies with worked examples, a 4-week plan, and test-day tips.</p><a class="btn" href="guides.html">Read the guides</a></div>
+ <div class="card"><h3>📈 My Results</h3><p>Your scores and practice history, saved on this device. Look back at past answers and explanations anytime.</p><a class="btn" href="results.html">My results</a></div>
+</div>
+<div class="card"><h3 style="margin-top:0">Suggested way to use this site</h3><ol>
+<li>Read the <a href="guide-overview.html">Test Overview</a> (5 minutes).</li>
+<li>Take <a href="test.html?t=1">Practice Test 1</a> timed, in one sitting if you can.</li>
+<li>Go through every explanation for the questions you missed, then use <a href="practice.html">Quick Practice</a> on your weakest topics.</li>
+<li>Follow the <a href="study-plan.html">4-week study plan</a>, take <a href="test.html?t=2">Practice Test 2</a>, then finish with the free official Bluebook tests.</li></ol></div>
+</main></div>
+<script src="assets/common.js"></script><script src="assets/questions.js"></script><script>
+(function(){const r=document.getElementById('resume');let h='';
+[1,2].forEach(t=>{const p=PSAT.load('psat.progress.t'+t,null);if(p)h+=`<div class="tip">You have Practice Test ${t} in progress. <a class="btn small" href="test.html?t=${t}">Resume Test ${t}</a></div>`});
+r.innerHTML=h})();</script><script>PSAT.header("index.html");PSAT.footer();</script></body></html>
